@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.hafidrf.mandiri"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'baseUrl', '"https://newsapi.org/v2/"'
+            buildConfigField 'String', 'apiKey', '"ad6250bde60641d286eba0c3e545f76d"'
+        }
+        debug {
+            buildConfigField 'String', 'baseUrl', '"https://newsapi.org/v2/"'
+            buildConfigField 'String', 'apiKey', '"ad6250bde60641d286eba0c3e545f76d"'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.activity:activity-ktx:$activity_version"
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    //Load Hilt Package
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecyc_dagger_version"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
+
+    //Library Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    //Library RxJava
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_rx_version"
+
+    //Chucker
+    implementation "com.github.chuckerteam.chucker:library:$chucker_version"
+
+    //Shimmer
+    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+
+    //Card & RecyclerView
+    implementation "androidx.cardview:cardview:$cardview_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //Core Kotlin
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_version"
+
+    //Paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
+
+    //coil
+    implementation "io.coil-kt:coil:$coil_version"
+
+    implementation "org.ocpsoft.prettytime:prettytime:$pretty_version"
+    implementation "com.makeramen:roundedimageview:$rounded_image_version"
+}
